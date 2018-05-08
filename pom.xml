@@ -186,6 +186,29 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>install</phase>
+            <configuration>
+              <target>
+                <echo>ANT TASK - copying files....</echo>
+                <copy todir="${basedir}/src/main/java/io/burt/jmespath/parser" overwrite="true" flatten="true">
+                  <fileset dir="${basedir}/target/generated-sources/antlr4/io/burt/jmespath/parser" includes="*.java" >
+                    <include name="*.java" />
+                  </fileset>
+                </copy>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
